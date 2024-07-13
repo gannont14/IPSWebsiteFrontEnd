@@ -10,10 +10,14 @@ const ServicesPage = () => {
 
   useEffect(() => {
     getServices();
-  });
+  }, []);
 
   let getServices = async () => {
-    let response = await fetch(API_URL);
+    let response = await fetch(API_URL, {
+      method: "GET",
+    });
+
+    console.log("sent request");
 
     let data = await response.json();
     setServices(data);
@@ -27,6 +31,7 @@ const ServicesPage = () => {
             key={service.id}
             title={service.title}
             body={service.body}
+            image={service.image}
           />
         ))}
       </div>
