@@ -1,6 +1,7 @@
 import { Route, HashRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 import AboutPageLayout from "./layouts/AboutPageLayout";
+import AdminPageLayout from "./layouts/AdminPageLayout";
 import HomePageLayout from "./layouts/HomePageLayout";
 import PhotoGalleryLayout from "./layouts/PhotoGalleryLayout";
 import ServicesPageLayout from "./layouts/ServicesPageLayout";
@@ -14,6 +15,7 @@ function App() {
           <Route path="/services" element={<ServicesPageLayout />} />
           <Route path="/about" element={<AboutPageLayout />} />
           <Route path="/photos" element={<PhotoGalleryLayout />} />
+          <Route path="/admin" element={<AdminPageLayout />} />
         </Routes>
       </Router>
     </div>
