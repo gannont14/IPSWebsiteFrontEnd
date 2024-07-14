@@ -11,10 +11,10 @@ import { SocialIcon } from "react-social-icons";
 
 //logo
 
-const services = ["Services", "Seasonal", "Mowing", "Snow Removal"];
+const services = ["Services", "Recurring", "Mowing", "Snow Removal"];
 const servicesLinks = [
   "servicesLink",
-  "seasonalLink",
+  "reccuringLink",
   "mowingLink",
   "snowRemovalLink",
 ];
@@ -36,6 +36,8 @@ const socialsLinks = ["facebook", "twitter", "instagram", "tiktok"];
 const content = [services, personal, info];
 const contentLinks = [servicesLinks, personalLinks, infoLinks];
 
+// this entire section could be reworked to just be a daisyUI footer, https://daisyui.com/components/footer/
+
 const Footer = () => {
   return (
     <div className="flex">
@@ -43,10 +45,10 @@ const Footer = () => {
         //dont worry about how this is way too complex
       }
       {content.map((content, outIndex) => (
-        <div className="border border-red-500 w-full h-[14rem] pl-[60px] flex flex-col space-y-2  p-5">
+        <div className=" w-full h-[14rem] pl-[60px] flex flex-col space-y-2  p-5">
           {content.map((header, index) => (
             <Link
-              className="mx-8 border border-green-500 w-[20%] p-auto flex items-center"
+              className="mx-8  w-[20%] p-auto flex items-center"
               to={contentLinks[outIndex][index]}
             >
               {header}
@@ -59,7 +61,7 @@ const Footer = () => {
         //Icons are getting cut off on sides , don't want to scroll internet to find fix, also like 90% sure we will only need like
         // 1/2 of these socials
       }
-      <div className="border border-red-500 w-full h-[14rem] pl-[10px] py-3 flex flex-col space-y-2 overflow-visible">
+      <div className=" w-full h-[14rem] pl-[10px] py-3 flex flex-col space-y-2 overflow-visible">
         {socialsLogos.map((social, index) => (
           <SocialIcon
             className="my-auto"
