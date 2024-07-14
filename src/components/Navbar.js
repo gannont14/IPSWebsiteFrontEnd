@@ -1,13 +1,15 @@
 import React from "react";
-import IPSLogo from "../images/IPSLogo.png";
+import IPSLogo from "../static/IPSLogo.png";
 
-const navbar = () => {
+const navbar = (className) => {
   let headers = ["Home", "Services", "About", "Photo Gallery"];
   let headerLinks = ["/", "/services", "/about", "/photos"];
   // mx-8 my-auto  border border-green-500
 
   return (
-    <div className="w-full h-[8rem] flex pl-[30px]">
+    <div
+      className={`w-full h-[8rem] flex pl-[30px] transition-all duration-300 fixed z-10 ${className}`}
+    >
       <img
         className="h-[6rem] rounded-md px-auto py-auto my-auto "
         src={IPSLogo}
