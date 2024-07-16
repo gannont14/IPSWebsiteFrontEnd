@@ -57,7 +57,7 @@ const ServicesPage = () => {
       {/* renders the cards with information pulled from the API call  */}
       {/* daisyUI has some blank cards that could probably be rendered before cards have loaded so the page doesn't have some jarring size change */}
       {/* https://daisyui.com/components/skeleton/ */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[20px]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[50px]">
         {services.map((service) => (
           <ServicesCard
             key={service.id}
