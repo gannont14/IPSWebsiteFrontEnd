@@ -3,7 +3,7 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import HomePage from "../pages/HomePage";
 
-const HomePageLayout = ({ content }) => {
+const HomePageLayout = () => {
   //handle video blurring and navbar changes on scroll
   // background by default to transparent for the home page
   const [navbarBg, setNavbarBg] = useState("bg-transparent");
@@ -20,7 +20,7 @@ const HomePageLayout = ({ content }) => {
         const videoHeight = videoRef.current.clientHeight;
         const scrollY = window.scrollY;
         if (scrollY > videoHeight) {
-          setNavbarBg("bg-gray-900 bg-opacity-75"); // Set your desired background color here
+          setNavbarBg("bg-gray-800 shadow shadow-black");
         } else {
           setNavbarBg("bg-transparent");
         }
@@ -33,7 +33,7 @@ const HomePageLayout = ({ content }) => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [navbarBg]);
 
   return (
     <>

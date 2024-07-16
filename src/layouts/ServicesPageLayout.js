@@ -7,9 +7,7 @@ const ServicesPageLayout = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-[url(/Users/gannontubbs/Documents/IMG_1546.jpg)] bg-cover bg-center">
-        <ServicesPage />
-      </div>
+      <ServicesPage />
       <Footer />
     </>
   );

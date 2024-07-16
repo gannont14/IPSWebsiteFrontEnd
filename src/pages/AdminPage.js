@@ -3,7 +3,7 @@ import AdminUploadForm from "../components/AdminUploadForm";
 
 const AdminPage = () => {
   return (
-    <div>
+    <div className="pt-[10rem]">
       <h1>admin page</h1>
       <AdminUploadForm />
     </div>
