@@ -49,26 +49,32 @@ const PhotoGalleryPage = () => {
 
   return (
     <div className="pt-[10rem]">
-      <h1 className="text-white text-center font-bold text-xl">
-        Photo gallery
+      <h1 className="m-3 my-[3rem] text-white text-center text-6xl">
+        Our Previous Work
       </h1>
 
-      <div className="carousel w-full h-[45rem]">
+      <div className="carousel carousel-center w-full h-[45rem]">
         <div
           id={`slide${photoIndex}`}
           className="carousel-item relative w-full"
         >
-          <img src={photos[photoIndex].image} className="w-full"></img>
+          <img
+            src={photos[photoIndex].image}
+            className="w-full h-full object-cover"
+          ></img>
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
             <a onClick={previousPhoto} className="btn btn-circle">
-              /
+              {/* unicode for > */}
+              &lt;
             </a>
             <a onClick={nextPhoto} className="btn btn-circle">
-              \
+              {/* unicode for > */}
+              &gt;
             </a>
           </div>
         </div>
       </div>
+      <div className="h-[15rem]">Test content below</div>
     </div>
   );
 };
