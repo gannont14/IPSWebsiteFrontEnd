@@ -19,6 +19,7 @@ const HomePage = ({ videoRef, blurAmount }) => {
           autoPlay
           loop
           muted
+          disablePictureInPicture
           style={{ filter: `brightness(60%) blur(${blurAmount}px) ` }}
         />
         <div className="relative z-10 flex items-center justify-center h-full">

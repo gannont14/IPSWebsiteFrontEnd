@@ -58,8 +58,11 @@ const PhotoGalleryPage = () => {
           id={`slide${photoIndex}`}
           className="carousel-item relative w-full"
         >
-          <img src={photos[photoIndex].image} className="w-full"></img>
-          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+          <img
+            src={photos[photoIndex].image}
+            className="w-full h-full object-cover"
+          ></img>
+          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform  justify-between">
             <a onClick={previousPhoto} className="btn btn-circle">
               /
             </a>
