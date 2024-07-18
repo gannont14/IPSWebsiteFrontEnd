@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import VerticalGalleryCarousel from "../components/VerticalGalleryCarousel";
 
 const PhotoGalleryPage = () => {
   let [photos, setPhotos] = useState([]);
@@ -29,15 +30,16 @@ const PhotoGalleryPage = () => {
     setIsLoading(false);
   };
 
-  let nextPhoto = () => {
-    setPhotoIndex((photoIndex + 1 + photos.length) % photos.length);
-    console.log("test");
-  };
-
-  let previousPhoto = () => {
-    setPhotoIndex((photoIndex - 1 + photos.length) % photos.length);
-    console.log("test1");
-  };
+  // autoscroll for photo gallery
+  useEffect(() => {
+    const intervalLength = 3000;
+    if (photos.length > 0) {
+      const interval = setInterval(() => {
+        setPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
+      }, intervalLength); // Change image every 3 seconds
+      return () => clearInterval(interval);
+    }
+  }, [photos]);
 
   if (isLoading) {
     return <div className="pt-[10rem]">Loading...</div>;
@@ -49,35 +51,63 @@ const PhotoGalleryPage = () => {
 
   return (
     <div className="pt-[10rem]">
-      <h1 className="m-3 my-[3rem] text-white text-center text-6xl">
-        Our Previous Work
-      </h1>
-
-      <div className="carousel carousel-center w-full h-[45rem]">
-        <div
-          id={`slide${photoIndex}`}
-          className="carousel-item relative w-full"
-        >
+      <div className="relative w-full h-[45rem] overflow-hidden">
+        {photos.map((photo, index) => (
           <img
-            src={photos[photoIndex].image}
-            className="w-full h-full object-cover"
-          ></img>
-
-
-
- <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a onClick={previousPhoto} className="btn btn-circle">
-              {/* unicode for > */}
-              &lt;
-            </a>
-            <a onClick={nextPhoto} className="btn btn-circle">
-              {/* unicode for > */}
-              &gt;
-            </a>
-          </div>
-        </div>
+            key={index}
+            src={photo.image}
+            alt={`Slide ${index}`}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+              index === photoIndex ? "slide-in" : "slide-out"
+            }`}
+          />
+        ))}
       </div>
-      <div className="h-[15rem]">Test content below</div>
+
+      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-4 pt-[5rem]">
+        {photos.map((photo, index) => (
+          <div key={index} className="p-4 shadow-md rounded-lg">
+            <img
+              src={photo.image}
+              alt={`Photo ${index}`}
+              className="h-[30rem] w-[20rem] object-cover rounded-lg"
+            />
+            <div className="p-4">
+              <h2 className="text-lg font-bold mb-2">{photo.title}</h2>
+              <p className="text-gray-700">{photo.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* added style tag to add css class for the transitions */}
+      <style jsx>{`
+        @keyframes slideIn {
+          from {
+            transform: translateX(-100%);
+          }
+          to {
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slideOut {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(100%);
+          }
+        }
+
+        .slide-in {
+          animation: slideIn 1s forwards;
+        }
+
+        .slide-out {
+          animation: slideOut 1s forwards;
+        }
+      `}</style>
     </div>
   );
 };
