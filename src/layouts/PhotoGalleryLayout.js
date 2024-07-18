@@ -1,4 +1,5 @@
 import React from "react";
+import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import PhotoGallery from "../pages/PhotoGalleryPage";
 
@@ -7,6 +8,7 @@ const PhotoGalleryLayout = () => {
     <>
       <Navbar />
       <PhotoGallery />
+      <Footer />
     </>
   );
 };
