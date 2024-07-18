@@ -40,7 +40,7 @@ const contentLinks = [servicesLinks, personalLinks, infoLinks];
 
 const Footer = () => {
   return (
-    <div className="flex">
+    <div className="flex bg-secondary ">
       {
         //dont worry about how this is way too complex
       }
