@@ -22,6 +22,7 @@ const navbar = ({ className = "bg-gray-800 shadow shadow-black" }) => {
           <Link
             className="mx-8 my-auto btn btn-outline border-transparent hover:underline hover:bg-transparent hover:border-white hover:text-white text-white "
             to={headerLinks[index]}
+            key={index}
           >
             {header}
           </Link>

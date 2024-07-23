@@ -1,12 +1,14 @@
 import React from "react";
-import AdminUploadImageForm from "../components/AdminUploadImageForm";
+import AdminUploadAboutForm from "../components/AdminUploadAboutForm";
+// import AdminUploadImageForm from "../components/AdminUploadImageForm";
 
 const AdminPage = () => {
   return (
     <div className="pt-[10rem]">
       <h1>admin page</h1>
       {/* <AdminUploadForm /> */}
-      <AdminUploadImageForm />
+      {/* <AdminUploadImageForm /> */}
+      <AdminUploadAboutForm />
     </div>
   );
 };

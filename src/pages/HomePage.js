@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 // this file is massive and could be converted to maybe a smaller file or different file type?
+import HomePagePictureDescription from "../components/HomePagePictureDescription";
+import heroBackgroundImage from "../static/IMG_1691.jpeg";
 import backgroundVideo from "../static/IPS_Drone_Footage.mp4";
 
 const HomePage = ({ videoRef, blurAmount }) => {
@@ -30,8 +32,11 @@ const HomePage = ({ videoRef, blurAmount }) => {
         </div>
       </div>
       {/* Content below */}
-      <div className="border border-primary h-[80rem] bg-white">
-        test content below playing video
+      <div className=" h-[60rem] bg-white flex">
+        <HomePagePictureDescription
+          picture={heroBackgroundImage}
+          content={<div>TestContent</div>}
+        />
       </div>
     </>
   );
