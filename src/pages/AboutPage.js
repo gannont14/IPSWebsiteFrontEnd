@@ -1,8 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const AboutPage = () => {
   //   current is pulling as a list, because of many=True on the backend stuff, should just be 1 item, and won't need to [0] it
-  const [aboutContent, setAboutContent] = useState([]);
   // this can be circumvented when view is switched to only return one item
   const [mainContent, setMainContent] = useState(null);
 
@@ -12,21 +11,20 @@ const AboutPage = () => {
 
   // make API call to retrive content from database
   useEffect(() => {
+    const getAboutContent = async () => {
+      let response = await fetch(API_URL, {
+        method: "GET",
+      });
+      console.log("sent request");
+
+      //not properly settings About Content
+      let data = await response.json();
+      setMainContent(data[0]);
+      setIsLoading(false);
+    };
+
     getAboutContent();
   }, []);
-
-  let getAboutContent = async () => {
-    let response = await fetch(API_URL, {
-      method: "GET",
-    });
-
-    console.log("sent request");
-
-    let data = await response.json();
-    setAboutContent(data);
-    setIsLoading(false);
-    setMainContent(aboutContent[0]);
-  };
 
   if (isLoading) {
     return <div className="pt-[10rem]">LOADING...</div>;
@@ -38,7 +36,7 @@ const AboutPage = () => {
       <div className="w-full h-[45rem]">
         <h1 className="text-6xl font-bold">{mainContent.title}</h1>
 
-        <h2 className="text-3xl font-thin">{mainContent.subHeading}</h2>
+        <h2 className="text-3xl font-thin">{mainContent.subheading}</h2>
 
         <p>{mainContent.mainBodyContent}</p>
 
