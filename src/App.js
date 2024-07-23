@@ -8,7 +8,7 @@ import ServicesPageLayout from "./layouts/ServicesPageLayout";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App light">
       <Router>
         <Routes>
           <Route exact path="/" element={<HomePageLayout />} />

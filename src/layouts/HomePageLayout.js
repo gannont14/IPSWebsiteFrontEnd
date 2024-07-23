@@ -19,7 +19,7 @@ const HomePageLayout = () => {
       if (videoRef.current) {
         const videoHeight = videoRef.current.clientHeight;
         const scrollY = window.scrollY;
-        if (scrollY > videoHeight) {
+        if (scrollY + 150 > videoHeight) {
           setNavbarBg("bg-gray-800 shadow shadow-black");
         } else {
           setNavbarBg("bg-transparent");
