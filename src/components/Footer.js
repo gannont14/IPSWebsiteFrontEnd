@@ -40,7 +40,7 @@ const contentLinks = [servicesLinks, personalLinks, infoLinks];
 
 const Footer = () => {
   return (
-    <div className="flex bg-secondary ">
+    <div className="flex bg-white shadow-inner ">
       {
         //dont worry about how this is way too complex
       }
@@ -48,7 +48,7 @@ const Footer = () => {
         <div className=" w-full h-[14rem] pl-[60px] flex flex-col space-y-2  p-5">
           {content.map((header, index) => (
             <Link
-              className="mx-8  w-[20%] p-auto flex items-center"
+              className="mx-8  w-[20%] p-auto flex items-center text-black"
               to={contentLinks[outIndex][index]}
             >
               {header}
@@ -64,7 +64,7 @@ const Footer = () => {
       <div className=" w-full h-[14rem] pl-[10px] py-3 flex flex-col space-y-2 overflow-visible">
         {socialsLogos.map((social, index) => (
           <SocialIcon
-            className="my-auto"
+            className="my-auto text-black"
             link={social}
             url={socialsLinks[index]}
           />

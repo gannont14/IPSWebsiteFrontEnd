@@ -2,11 +2,9 @@ import React from "react";
 
 export const ServicesCard = ({ title, body, image }) => {
   return (
-    <div className="card card-compact bg-gray-800 w-30 shadow-xl">
+    <div className="card card-compact bg-white w-30 shadow-xl">
       <figure>
-        <img
-          src={image}
-          alt="Insert image alt text here" />
+        <img src={image} alt="Insert image alt text here" />
       </figure>
       <div className="card-body items-center text-center">
         <h2 className="card-title text-white">{title}</h2>

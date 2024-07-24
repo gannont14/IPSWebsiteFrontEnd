@@ -53,7 +53,7 @@ const ServicesPage = () => {
   }
 
   return (
-    <div className="container mx-auto p-4 pt-[10rem]">
+    <div className="container mx-auto p-4 pt-[15rem] bg-white">
       {/* renders the cards with information pulled from the API call  */}
       {/* daisyUI has some blank cards that could probably be rendered before cards have loaded so the page doesn't have some jarring size change */}
       {/* https://daisyui.com/components/skeleton/ */}

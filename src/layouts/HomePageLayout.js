@@ -8,6 +8,9 @@ const HomePageLayout = () => {
   // background by default to transparent for the home page
   const [navbarBg, setNavbarBg] = useState("bg-transparent");
 
+  const [textClasses, setTextClasses] = useState(
+    "text-white hover:underline hover:bg-transparent hover:border-white hover:text-white"
+  );
   //   used to get height of video to check for when background should change
   const videoRef = useRef(null);
 
@@ -20,9 +23,15 @@ const HomePageLayout = () => {
         const videoHeight = videoRef.current.clientHeight;
         const scrollY = window.scrollY;
         if (scrollY + 150 > videoHeight) {
-          setNavbarBg("bg-gray-800 shadow shadow-black");
+          setNavbarBg("bg-white shadow shadow-lg");
+          setTextClasses(
+            "text-black hover:underline hover:bg-transparent hover:border-black hover:text-black"
+          );
         } else {
           setNavbarBg("bg-transparent");
+          setTextClasses(
+            "text-white hover:underline hover:bg-transparent hover:border-white hover:text-white"
+          );
         }
 
         // adjust blur amount based on scroll position
@@ -37,7 +46,7 @@ const HomePageLayout = () => {
 
   return (
     <>
-      <Navbar className={navbarBg} />
+      <Navbar navClassName={navbarBg} textClassName={textClasses} />
       <HomePage videoRef={videoRef} blurAmount={blurAmount} />
       <Footer />
     </>
