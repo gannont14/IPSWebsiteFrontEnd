@@ -3,11 +3,10 @@ import React, { useEffect, useRef } from "react";
 import HomePagePictureDescription from "../components/HomePagePictureDescription";
 import bannerImage from "../static/IMG_1501.jpeg";
 import heroBackgroundImage from "../static/IMG_1691.jpeg";
+import backgroundVideo from "../static/IPS_Drone_Footage.mp4";
 
 const HomePage = ({ videoRef, blurAmount }) => {
   const imageRef = useRef(null);
-
-  const backgroundVideoLink = "http://localhost:8000/media/DroneFootage.mp4";
 
   useEffect(() => {
     if (videoRef.current) {
@@ -30,7 +29,7 @@ const HomePage = ({ videoRef, blurAmount }) => {
         <video
           ref={videoRef}
           className="absolute top-0 left-0 w-full h-full object-cover"
-          src={backgroundVideoLink}
+          src={backgroundVideo}
           type="video/mp4"
           autoPlay
           loop
