@@ -25,7 +25,7 @@ const HomePage = ({ videoRef, blurAmount }) => {
   }, [videoRef]);
   return (
     <>
-      <div className="relative w-full h-screen overflow-hidden z-[-1] drop-shadow-2xl">
+      <div className="relative w-full h-screen overflow-hidden z-[1] drop-shadow-2xl">
         <video
           ref={videoRef}
           className="absolute top-0 left-0 w-full h-full object-cover"
