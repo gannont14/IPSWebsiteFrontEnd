@@ -28,10 +28,15 @@ const infoLinks = ["contactLink"];
 const socialsLogos = [
   "facebook.com",
   "twitter.com",
-  "instagram.com",
+  "instragram.com",
   "tiktok.com",
 ];
-const socialsLinks = ["facebook", "twitter", "instagram", "tiktok"];
+const socialsLinks = [
+  "facebook",
+  "twitter",
+  "https://www.instagram.com/interactivepropertysolutions/",
+  "tiktok",
+];
 
 const content = [services, personal, info];
 const contentLinks = [servicesLinks, personalLinks, infoLinks];
@@ -67,6 +72,7 @@ const Footer = () => {
             className="my-auto text-black"
             link={social}
             url={socialsLinks[index]}
+            target="_blank"
           />
         ))}
       </div>
