@@ -9,7 +9,7 @@ const HomePageLayout = () => {
   const [navbarBg, setNavbarBg] = useState("bg-transparent");
 
   const [textClasses, setTextClasses] = useState(
-    "text-white hover:underline hover:bg-transparent hover:border-white hover:text-white"
+    "text-white hover:bg-transparent hover:border-white hover:text-white"
   );
   //   used to get height of video to check for when background should change
   const videoRef = useRef(null);
@@ -25,12 +25,12 @@ const HomePageLayout = () => {
         if (scrollY + 150 > videoHeight) {
           setNavbarBg("bg-white shadow shadow-lg");
           setTextClasses(
-            "text-black hover:underline hover:bg-transparent hover:border-black hover:text-black"
+            "text-black  hover:bg-transparent hover:border-black hover:text-black"
           );
         } else {
           setNavbarBg("bg-transparent");
           setTextClasses(
-            "text-white hover:underline hover:bg-transparent hover:border-white hover:text-white"
+            "text-white  hover:bg-transparent hover:border-white hover:text-white"
           );
         }
 

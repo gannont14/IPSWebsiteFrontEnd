@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import HomePagePictureDescription from "../components/HomePagePictureDescription";
 
 const AboutPage = () => {
   //   current is pulling as a list, because of many=True on the backend stuff, should just be 1 item, and won't need to [0] it
@@ -30,17 +31,20 @@ const AboutPage = () => {
     return <div className="pt-[10rem]">LOADING...</div>;
   }
 
-  // title, subHeading, mainBodyContent, image
+  // title, subheader, mainBodyContent, image
   return (
-    <div className="pt-[10rem]">
-      <div className="w-full h-[45rem]">
-        <h1 className="text-6xl font-bold">{mainContent.title}</h1>
-
-        <h2 className="text-3xl font-thin">{mainContent.subheading}</h2>
-
-        <p>{mainContent.mainBodyContent}</p>
-
-        <img src={mainContent.image}></img>
+    <div className="pt-[10rem] h-[100vh] w-full flex">
+      {/* Left body content */}
+      <div className="m-5 p-5 w-[40%] items-center justify-center flex">
+        <img className="w-full mx-auto rounded-md" src={mainContent.image} />
+      </div>
+      {/* Right body content */}
+      <div className="flex-1 m-8 p-5">
+        <h2 className="text-black text-3xl font-bold">{mainContent.title}</h2>
+        <h3 className="text-black text-2xl font-thin py-3">
+          {mainContent.subheader}
+        </h3>
+        <p className="text-black py-3 text-xl">{mainContent.mainBodyContent}</p>
       </div>
     </div>
   );
