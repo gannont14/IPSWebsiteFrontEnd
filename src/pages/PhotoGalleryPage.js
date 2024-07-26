@@ -32,7 +32,7 @@ const PhotoGalleryPage = () => {
 
   // autoscroll for photo gallery
   useEffect(() => {
-    const intervalLength = 3000;
+    const intervalLength = 9000;
     if (photos.length > 0) {
       const interval = setInterval(() => {
         setPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);

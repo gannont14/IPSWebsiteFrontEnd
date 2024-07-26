@@ -4,7 +4,7 @@ import IPSLogo from "../static/IPSLogo.png";
 
 const navbar = ({
   navClassName = "bg-white shadow shadow-lg",
-  textClassName = "text-black hover:underline hover:bg-transparent hover:border-black hover:text-black",
+  textClassName = "text-black hover:bg-transparent hover:border-black hover:text-black",
 }) => {
   let headers = ["Home", "Services", "About", "Photo Gallery"];
   let headerLinks = ["/", "/services", "/about", "/photos"];
