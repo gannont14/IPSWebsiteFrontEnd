@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 // this file is massive and could be converted to maybe a smaller file or different file type?
 import HomePagePictureDescription from "../components/HomePagePictureDescription";
-import bannerImage from "../static/IMG_1501.jpeg";
+import bannerImage from "../static/BannerImage.jpg";
 import heroBackgroundImage from "../static/IMG_1691.jpeg";
 import backgroundVideo from "../static/IPS_Drone_Footage.mp4";
 
