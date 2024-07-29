@@ -11,12 +11,11 @@ import { SocialIcon } from "react-social-icons";
 
 //logo
 
-const services = ["Services", "Recurring", "Mowing", "Snow Removal"];
+const services = ["Services", "About", "Photo Gallery"];
 const servicesLinks = [
-  "servicesLink",
-  "reccuringLink",
-  "mowingLink",
-  "snowRemovalLink",
+  "/services",
+  "/about",
+  "/photos",
 ];
 
 const personal = ["About", "Legal"];
@@ -53,7 +52,7 @@ const Footer = () => {
         <div className=" w-full h-[14rem] pl-[60px] flex flex-col space-y-2  p-5">
           {content.map((header, index) => (
             <Link
-              className="mx-8  w-[20%] p-auto flex items-center text-black"
+              className="mx-8  w-[30%] p-auto flex items-center text-black"
               to={contentLinks[outIndex][index]}
             >
               {header}
