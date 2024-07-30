@@ -3,6 +3,7 @@ import VerticalGalleryCarousel from "../components/VerticalGalleryCarousel";
 
 const PhotoGalleryPage = () => {
   let [photos, setPhotos] = useState([]);
+  let [groupedPhotos, setGroupedPhotos] = useState({});
 
   //   start with  6 blank cards to fill full screens worth of space
   let [isLoading, setIsLoading] = useState(true);
@@ -27,12 +28,24 @@ const PhotoGalleryPage = () => {
 
     let data = await response.json();
     setPhotos(data);
+
+    const grouped = data.reduce((acc, photo) => {
+      const { serviceTag } = photo;
+      if (!acc[serviceTag]) {
+        acc[serviceTag] = [];
+      }
+      acc[serviceTag].push(photo);
+      return acc;
+    }, {});
+
+    setGroupedPhotos(grouped);
+
     setIsLoading(false);
   };
 
   // autoscroll for photo gallery
   useEffect(() => {
-    const intervalLength = 9000;
+    const intervalLength = 3000;
     if (photos.length > 0) {
       const interval = setInterval(() => {
         setPhotoIndex((prevIndex) => (prevIndex + 1) % photos.length);
@@ -63,24 +76,34 @@ const PhotoGalleryPage = () => {
           />
         ))}
       </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-4 pt-[5rem]">
-        {photos.map((photo, index) => (
-          <div key={index} className="p-4 shadow-md rounded-lg">
-            <img
-              src={photo.image}
-              alt={`Photo ${index}`}
-              className="h-[30rem] w-[20rem] object-cover rounded-lg"
-            />
-            <div className="p-4">
-              <h2 className="text-lg font-bold mb-2">{photo.title}</h2>
-              <p className="text-gray-700">{photo.description}</p>
+      <div className="pt-[10rem]">
+        <div>
+          {Object.entries(groupedPhotos).map(([tag, photos]) => (
+            <div key={tag} className="service-tag-group mb-10">
+              <h2 className="text-2xl font-bold my-4">{tag}</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-5 gap-4 pt-[5rem]">
+                {photos.map((photo) => (
+                  <div
+                    key={photo.id}
+                    className="photo-card p-4 shadow-md rounded-lg"
+                  >
+                    <img
+                      src={photo.image}
+                      alt={photo.description}
+                      className="h-[30rem] w-[20rem] object-cover rounded-lg"
+                    />
+                    <div className="p-4">
+                      <h2 className="text-lg font-bold mb-2">{photo.title}</h2>
+                      <p className="text-gray-700">{photo.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-
-      {/* added style tag to add css class for the transitions */}
+      {/* added style tag to add css class for the transitions */}{" "}
       <style jsx>{`
         @keyframes slideIn {
           from {
