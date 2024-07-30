@@ -56,38 +56,63 @@ const AdminUploadForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Title:</label>
-        <input
-          type="text"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>Body:</label>
-        <textarea
-          name="body"
-          value={formData.body}
-          onChange={handleChange}
-          required
-        ></textarea>
-      </div>
-      <div>
-        <label>Image:</label>
-        <input
-          type="file"
-          name="image"
-          onChange={handleImageChange}
-          accept="image/*"
-          required
-        />
-      </div>
-      <button type="submit">Upload Service</button>
-    </form>
+    <div>
+      <form className="form" onSubmit={handleSubmit}>
+        <div>
+          <label>Title:</label>
+          <input
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Body:</label>
+          <textarea
+            name="body"
+            value={formData.body}
+            onChange={handleChange}
+            required
+          ></textarea>
+        </div>
+        <div>
+          <label>Image:</label>
+          <input
+            type="file"
+            name="image"
+            onChange={handleImageChange}
+            accept="image/*"
+            required
+          />
+        </div>
+        <button type="submit">Upload Service</button>
+      </form>
+      <style jsx>
+        {`
+          input,
+          textarea {
+            border: solid;
+            border-radius: 3px;
+            margin: 5px;
+          }
+
+          form {
+            padding: 5px;
+            padding-left: 20px;
+          }
+
+          button {
+            border: solid;
+            border-radius: 3px;
+            margin: 5px;
+            width: 20rem;
+            height: 3rem;
+          }
+        `}
+      </style>
+    </div>
   );
 };
 

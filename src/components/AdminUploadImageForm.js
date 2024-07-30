@@ -54,39 +54,64 @@ const AdminUploadImageForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>description:</label>
-        <input
-          type="text"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          required
-        />
-      </div>
-      <div>
-        <label>serviceTag:</label>
-        <textarea
-          type="text"
-          name="serviceTag"
-          value={formData.serviceTag}
-          onChange={handleChange}
-          required
-        ></textarea>
-      </div>
-      <div>
-        <label>Image:</label>
-        <input
-          type="file"
-          name="image"
-          onChange={handleImageChange}
-          accept="image/*"
-          required
-        />
-      </div>
-      <button type="submit">Upload Photo</button>
-    </form>
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>description:</label>
+          <input
+            type="text"
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>serviceTag:</label>
+          <textarea
+            type="text"
+            name="serviceTag"
+            value={formData.serviceTag}
+            onChange={handleChange}
+            required
+          ></textarea>
+        </div>
+        <div>
+          <label>Image:</label>
+          <input
+            type="file"
+            name="image"
+            onChange={handleImageChange}
+            accept="image/*"
+            required
+          />
+        </div>
+        <button type="submit">Upload Photo</button>
+      </form>
+      <style jsx>
+        {`
+          input,
+          textarea {
+            border: solid;
+            border-radius: 3px;
+            margin: 5px;
+          }
+
+          form {
+            padding: 5px;
+            padding-left: 20px;
+          }
+
+          button {
+            border: solid;
+            border-radius: 3px;
+            margin: 5px;
+            width: 20rem;
+            height: 3rem;
+          }
+        `}
+      </style>
+    </div>
   );
 };
 
