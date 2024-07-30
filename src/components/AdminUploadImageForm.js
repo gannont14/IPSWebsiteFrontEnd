@@ -29,8 +29,8 @@ const AdminUploadImageForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("Description", formData.description);
-    data.append("Service Tag", formData.serviceTag);
+    data.append("description", formData.description);
+    data.append("serviceTag", formData.serviceTag);
     data.append("image", formData.image);
 
     //make post request to services api
