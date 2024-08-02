@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import HomePagePictureDescription from "../components/HomePagePictureDescription";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const AboutPage = () => {
   //   current is pulling as a list, because of many=True on the backend stuff, should just be 1 item, and won't need to [0] it
@@ -28,7 +29,7 @@ const AboutPage = () => {
   }, []);
 
   if (isLoading) {
-    return <div className="pt-[10rem]">LOADING...</div>;
+    return <LoadingSpinner />;
   }
 
   // title, subheader, mainBodyContent, image

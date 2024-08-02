@@ -1,12 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // this file is massive and could be converted to maybe a smaller file or different file type?
 import HomePagePictureDescription from "../components/HomePagePictureDescription";
+import LoadingSpinner from "../components/LoadingSpinner";
 import bannerImage from "../static/BannerImage.jpg";
 import heroBackgroundImage from "../static/IMG_1691.jpeg";
 import backgroundVideo from "../static/IPS_Drone_Footage.mp4";
 
 const HomePage = ({ videoRef, blurAmount }) => {
   const imageRef = useRef(null);
+  let [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -22,7 +24,13 @@ const HomePage = ({ videoRef, blurAmount }) => {
         window.removeEventListener("scroll", handleScroll);
       };
     };
+    setIsLoading(false);
   }, [videoRef]);
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <>
       <div className="relative w-full h-screen overflow-hidden z-[1] drop-shadow-2xl">
