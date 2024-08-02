@@ -33,9 +33,9 @@ const navbar = ({
       </div>
       {/* right side content */}
       <div className="flex items-center ml-auto">
-        <div className="mr-[6rem] btn bg-primary text-white font-bold">
-          Contact us
-        </div>
+        <button className="mr-[6rem] btn bg-primary text-white font-bold outline outline-primary">
+          <Link to={"/contactus"}>Contact Us</Link>
+        </button>
       </div>
     </div>
   );
