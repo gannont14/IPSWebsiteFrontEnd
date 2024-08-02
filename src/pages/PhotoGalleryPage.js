@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
 import VerticalGalleryCarousel from "../components/VerticalGalleryCarousel";
 
 const PhotoGalleryPage = () => {
@@ -55,7 +56,7 @@ const PhotoGalleryPage = () => {
   }, [photos]);
 
   if (isLoading) {
-    return <div className="pt-[10rem]">Loading...</div>;
+    return <LoadingSpinner />;
   }
 
   if (photos.length == 0) {

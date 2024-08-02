@@ -14,10 +14,14 @@ const navbar = ({
     <div
       className={`w-full h-[8rem] flex pl-[30px] transition-all duration-300 fixed ${navClassName}  z-50`}
     >
-      <img
-        className="h-[6rem] rounded-md px-auto py-auto my-auto "
-        src={IPSLogo}
-      ></img>
+      <button>
+        <Link to="/">
+          <img
+            className="h-[6rem] rounded-md px-auto py-auto my-auto "
+            src={IPSLogo}
+          ></img>
+        </Link>
+      </button>
 
       {/* left side content */}
       <div className="flex">
@@ -33,7 +37,7 @@ const navbar = ({
       </div>
       {/* right side content */}
       <div className="flex items-center ml-auto">
-        <button className="mr-[6rem] btn bg-primary text-white font-bold outline outline-primary">
+        <button className="mr-[6rem] btn bg-primary text-white font-bold outline outline-primary border-0 hover:bg-white hover:text-black">
           <Link to={"/contactus"}>Contact Us</Link>
         </button>
       </div>
