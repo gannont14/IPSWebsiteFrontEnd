@@ -12,17 +12,13 @@ import { SocialIcon } from "react-social-icons";
 //logo
 
 const services = ["Services", "About", "Photo Gallery"];
-const servicesLinks = [
-  "/services",
-  "/about",
-  "/photos",
-];
+const servicesLinks = ["/services", "/about", "/photos"];
 
 const personal = ["About", "Legal"];
-const personalLinks = ["aboutLink", "legalLink"];
+const personalLinks = ["/about", "legalLink"];
 
-const info = ["contact"];
-const infoLinks = ["contactLink"];
+const info = ["Contact"];
+const infoLinks = ["/contactus"];
 
 const socialsLogos = [
   "facebook.com",
