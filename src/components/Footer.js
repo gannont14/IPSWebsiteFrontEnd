@@ -1,6 +1,6 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { SocialIcon } from "react-social-icons";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { SocialIcon } from 'react-social-icons';
 
 // services, continuous service, quotes
 // about, |Privacy policy| |FAQs|, legal?
@@ -11,26 +11,26 @@ import { SocialIcon } from "react-social-icons";
 
 //logo
 
-const services = ["Services", "About", "Photo Gallery"];
-const servicesLinks = ["/services", "/about", "/photos"];
+const services = ['Services', 'About', 'Photo Gallery'];
+const servicesLinks = ['/services', '/about', '/photos'];
 
-const personal = ["About", "Legal"];
-const personalLinks = ["/about", "legalLink"];
+const personal = ['Admin', 'Legal'];
+const personalLinks = ['/admin', 'legalLink'];
 
-const info = ["Contact"];
-const infoLinks = ["/contactus"];
+const info = ['Contact'];
+const infoLinks = ['/contactus'];
 
 const socialsLogos = [
-  "facebook.com",
-  "twitter.com",
-  "instragram.com",
-  "tiktok.com",
+  'facebook.com',
+  'twitter.com',
+  'instragram.com',
+  'tiktok.com',
 ];
 const socialsLinks = [
-  "facebook",
-  "twitter",
-  "https://www.instagram.com/interactivepropertysolutions/",
-  "tiktok",
+  'facebook',
+  'twitter',
+  'https://www.instagram.com/interactivepropertysolutions/',
+  'tiktok',
 ];
 
 const content = [services, personal, info];

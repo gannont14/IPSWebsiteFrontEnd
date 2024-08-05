@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 // depending on amount of different forms are going to need to come out, i.e. services, about etc. might need to parameterize this to handle
 // different formats and requests
 
 const AdminUploadForm = () => {
   const [formData, setFormData] = useState({
-    title: "",
-    body: "",
+    title: '',
+    body: '',
+    extendedBody: '',
     image: null,
   });
 
@@ -31,27 +32,28 @@ const AdminUploadForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("title", formData.title);
-    data.append("body", formData.body);
-    data.append("image", formData.image);
+    data.append('title', formData.title);
+    data.append('body', formData.body);
+    data.append('image', formData.image);
 
     //make post request to services api
-    let response = await fetch("/api/services", {
-      method: "POST",
+    let response = await fetch('/api/services', {
+      method: 'POST',
       body: data,
     });
 
     //check to make sure actually uploaded
     if (response.ok) {
-      alert("Service uploaded successfully!");
+      alert('Service uploaded successfully!');
       // reset form to make another upload
       setFormData({
-        title: "",
-        body: "",
+        title: '',
+        body: '',
+        extendedBody: '',
         image: null,
       });
     } else {
-      alert("Failed to upload service.");
+      alert('Failed to upload service.');
     }
   };
 
@@ -77,6 +79,16 @@ const AdminUploadForm = () => {
             required
           ></textarea>
         </div>
+        <div>
+          <label>Title:</label>
+          <input
+            type="text"
+            name="extendedBody"
+            value={formData.extendedBody}
+            onChange={handleChange}
+            required
+          />
+        </div>{' '}
         <div>
           <label>Image:</label>
           <input
