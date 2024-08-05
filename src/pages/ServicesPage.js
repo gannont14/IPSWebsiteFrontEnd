@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import LoadingSkeltons from "../components/LoadingSkeltons";
-import { ServicesCard } from "../components/ServicesCard";
+import React, { useEffect, useState } from 'react';
+import LoadingSkeltons from '../components/LoadingSkeltons';
+import { ServicesCard } from '../components/ServicesCard';
 
 const ServicesPage = () => {
   let [services, setServices] = useState([]);
@@ -10,7 +10,7 @@ const ServicesPage = () => {
 
   //fetch form services api, URL : 'api/services/
 
-  let API_URL = "/api/services";
+  let API_URL = '/api/services';
 
   useEffect(() => {
     getServices();
@@ -18,10 +18,10 @@ const ServicesPage = () => {
 
   let getServices = async () => {
     let response = await fetch(API_URL, {
-      method: "GET",
+      method: 'GET',
     });
 
-    console.log("sent request");
+    console.log('sent request');
 
     let data = await response.json();
     setServices(data);
@@ -58,6 +58,7 @@ const ServicesPage = () => {
             title={service.title}
             body={service.body}
             image={service.image}
+            extendedBody={service.extendedBody}
           />
         ))}
       </div>

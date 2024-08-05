@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-export const ServicesCard = ({ title, body, image }) => {
+export const ServicesCard = ({ title, body, image, extendedBody }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const toggleExpand = () => {
@@ -20,7 +20,7 @@ export const ServicesCard = ({ title, body, image }) => {
         <p className=" text-gray-700">{body}</p>
         <div className="card-actions justify-center p-3">
           <button onClick={toggleExpand} className="btn bg-primary text-white">
-            {isExpanded ? "expanded" : "Not Expanded"}
+            Read More
           </button>
         </div>
       </div>
@@ -29,14 +29,14 @@ export const ServicesCard = ({ title, body, image }) => {
       {isExpanded && (
         <div className="absolute inset-0 bg-gray-600 bg-opacity-90 flex flex-col items-center justify-center z-10 rounded-lg">
           <div className="text-center text-white h-[78%] p-7">
-            <p>{body}</p>
+            <p>{extendedBody}</p>
           </div>
           <div className="card-actions justify-center p-3">
             <button
               onClick={toggleExpand}
               className="btn bg-primary text-white"
             >
-              {isExpanded ? "expanded" : "Not Expanded"}
+              Read More
             </button>
           </div>
         </div>
