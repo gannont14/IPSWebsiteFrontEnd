@@ -14,6 +14,7 @@ const Navbar = ({
     setDropdownOpen((prevState) => !prevState);
   }
 
+  {/* Alters element overflow attributes depending on menu state */}
   const toggleScroll = (enable) => {
     const appElement = document.querySelector('.App.light');
     const rootElement = document.getElementById('root');
@@ -26,6 +27,7 @@ const Navbar = ({
     }
   };
 
+  {/* Toggles scrolling depending on menu state */}
   useEffect(() => {
     if (dropdownOpen) {
       toggleScroll(false);
@@ -33,15 +35,18 @@ const Navbar = ({
       toggleScroll(true);
     }
   
-    // Cleanup to reset the scroll behavior when the component unmounts
-    return () => {
-      toggleScroll(true);
-    };
+  {/* Cleanup to reset the scroll behavior when the component unmounts */}
+  return () => {
+    toggleScroll(true);
+  };
   }, [dropdownOpen]);
  
 
   return (
+    // Navigation bar parent div element
     <div className={`w-full h-28 -mb-28 flex flex-wrap items-center px-4 md:px-8 transition-all duration-300 fixed ${navClassName} z-50`}>
+
+      {/* Logo */}
       <div className="hidden md:flex items-center">
         <button>
           <Link to="/">
