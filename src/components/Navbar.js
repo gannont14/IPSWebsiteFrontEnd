@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import IPSLogo from "../static/IPSLogo.png";
 
 const Navbar = ({
@@ -8,35 +8,53 @@ const Navbar = ({
 }) => {
   const headers = ["Home", "Services", "About", "Photo Gallery"];
   const headerLinks = ["/", "/services", "/about", "/photos"];
-  const location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
     setDropdownOpen((prevState) => !prevState);
   }
 
-  const getCurrentPage = () => {
-    const currentPath = location.pathname;
-    const index = headerLinks.indexOf(currentPath);
-    return index !== -1 ? headers[index] : "Home";
-  }
-  // mx-8 my-auto  border border-green-500
+  const toggleScroll = (enable) => {
+    const appElement = document.querySelector('.App.light');
+    const rootElement = document.getElementById('root');
+  
+    if (appElement) {
+      appElement.style.overflow = enable ? 'auto' : 'hidden';
+    }
+    if (rootElement) {
+      rootElement.style.overflow = enable ? 'auto' : 'hidden';
+    }
+  };
+
+  useEffect(() => {
+    if (dropdownOpen) {
+      toggleScroll(false);
+    } else {
+      toggleScroll(true);
+    }
+  
+    // Cleanup to reset the scroll behavior when the component unmounts
+    return () => {
+      toggleScroll(true);
+    };
+  }, [dropdownOpen]);
+  
 
   return (
-    <div className={`w-[100%] h-auto flex items-center px-4 md:px-8 transition-all duration-300 fixed ${navClassName} z-50`}>
-      <div className="hidden md:mt-4 md:flex items-center">
-        <button className="md:mb-0">
+    <div className={`w-full h-28 -mb-28 flex flex-wrap items-center px-4 md:px-8 transition-all duration-300 fixed ${navClassName} z-50`}>
+      <div className="hidden md:flex items-center">
+        <button>
           <Link to="/">
-            <img className="h-24 rounded-md" src={IPSLogo} />
+            <img className="h-20 rounded-md" src={IPSLogo} />
           </Link>
         </button>
       </div>
 
       {/* Regular navigation */}
-      <div className="hidden md:mt-4 md:flex md:ml-auto border border-primary">
+      <div className="hidden md:flex md:ml-auto">
         {headers.map((header, index) => (
           <Link
-            className={`mx-4 my-2 md:my-0 text-lg btn btn-outline border-transparent ${textClassName}`}
+            className={`mx-4 md:my-0 text-lg btn btn-outline border-transparent ${textClassName}`}
             to={headerLinks[index]}
             key={index}
           >
@@ -45,35 +63,42 @@ const Navbar = ({
         ))}
       </div>
 
-      {/* Dropdown navigation for smaller screens */}
-      <div className="flex flex-col mt-8 mx-auto md:hidden border border-primary">
+      {/* Mobile navigation button */}
+      <div className="flex md:hidden mx-auto">
         <button
           onClick={toggleDropdown}
-          className={`flex items-center text-lg btn btn-outline border-transparent ${textClassName}`}
-        >
-          {getCurrentPage()}
-          <span className="ml-2">▼</span>
+          className={`text-2xl btn btn-outline border-transparent ${textClassName}`}
+          >
+            Menu
         </button>
+      </div>
 
-        {dropdownOpen && (
-          <div className="w-full bg-white shadow-lg rounded-md mt-2">
+      {/* Full-screen menu */ }
+      {dropdownOpen && (
+        <div className="fixed inset-0 bg-black h-screen w-screen bg-opacity-75 z-40 flex justify-center items-center">
+          <div className="bg-white h-screen w-screen flex flex-col justify-center items-center space-y-6">
             {headers.map((header, index) => (
               <Link
                 to={headerLinks[index]}
                 key={index}
-                className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ${location.pathname === headerLinks[index] ? "bg-gray-200" : ""
-                  }`}
+                className="text-2xl text-black hover:text-primary"
                 onClick={() => setDropdownOpen(false)}
               >
                 {header}
               </Link>
             ))}
+            <button
+              onClick={toggleDropdown}
+              className="mt-8 text-lg text-primary hover:text-black"
+            >
+              Close
+            </button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Contact Us button */}
-      <div className="hidden md:mt-4 md:flex md:ml-auto">
+      <div className="hidden md:flex md:ml-auto">
         <button className="btn bg-primary text-white font-bold outline outline-primary border-0 hover:bg-white hover:text-black">
           <Link to={"/contactus"}>Contact Us</Link>
         </button>
