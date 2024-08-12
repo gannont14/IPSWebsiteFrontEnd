@@ -31,21 +31,23 @@ const AdminUploadForm = () => {
   //   form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const token = localStorage.getItem('access_token');
     const data = new FormData();
     data.append('title', formData.title);
     data.append('body', formData.body);
     data.append('image', formData.image);
 
-    //make post request to services api
-    let response = await fetch('/api/services', {
+    const response = await fetch('/api/services/modify', {
       method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
       body: data,
     });
 
-    //check to make sure actually uploaded
     if (response.ok) {
       alert('Service uploaded successfully!');
-      // reset form to make another upload
       setFormData({
         title: '',
         body: '',
@@ -101,29 +103,6 @@ const AdminUploadForm = () => {
         </div>
         <button type="submit">Upload Service</button>
       </form>
-      <style jsx>
-        {`
-          input,
-          textarea {
-            border: solid;
-            border-radius: 3px;
-            margin: 5px;
-          }
-
-          form {
-            padding: 5px;
-            padding-left: 20px;
-          }
-
-          button {
-            border: solid;
-            border-radius: 3px;
-            margin: 5px;
-            width: 20rem;
-            height: 3rem;
-          }
-        `}
-      </style>
     </div>
   );
 };

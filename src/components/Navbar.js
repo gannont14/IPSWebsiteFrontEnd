@@ -38,7 +38,7 @@ const Navbar = ({
       toggleScroll(true);
     };
   }, [dropdownOpen]);
-  
+ 
 
   return (
     <div className={`w-full h-28 -mb-28 flex flex-wrap items-center px-4 md:px-8 transition-all duration-300 fixed ${navClassName} z-50`}>

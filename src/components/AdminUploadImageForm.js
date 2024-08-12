@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
 const AdminUploadImageForm = () => {
   // description, serviceTag, image
   const [formData, setFormData] = useState({
-    description: "",
-    serviceTag: "",
+    description: '',
+    serviceTag: '',
     image: null,
   });
 
@@ -29,27 +29,31 @@ const AdminUploadImageForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("description", formData.description);
-    data.append("serviceTag", formData.serviceTag);
-    data.append("image", formData.image);
+    const token = localStorage.getItem('access_token');
+    data.append('description', formData.description);
+    data.append('serviceTag', formData.serviceTag);
+    data.append('image', formData.image);
 
     //make post request to services api
-    let response = await fetch("/api/photos", {
-      method: "POST",
+    let response = await fetch('/api/photos/modify', {
+      method: 'POST',
       body: data,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     //check to make sure actually uploaded
     if (response.ok) {
-      alert("Photo uploaded successfully!");
+      alert('Photo uploaded successfully!');
       // reset form to make another upload
       setFormData({
-        description: "",
-        serviceTag: "",
+        description: '',
+        serviceTag: '',
         image: null,
       });
     } else {
-      alert("Failed to upload photo.");
+      alert('Failed to upload photo.');
     }
   };
 
@@ -88,29 +92,6 @@ const AdminUploadImageForm = () => {
         </div>
         <button type="submit">Upload Photo</button>
       </form>
-      <style jsx>
-        {`
-          input,
-          textarea {
-            border: solid;
-            border-radius: 3px;
-            margin: 5px;
-          }
-
-          form {
-            padding: 5px;
-            padding-left: 20px;
-          }
-
-          button {
-            border: solid;
-            border-radius: 3px;
-            margin: 5px;
-            width: 20rem;
-            height: 3rem;
-          }
-        `}
-      </style>
     </div>
   );
 };

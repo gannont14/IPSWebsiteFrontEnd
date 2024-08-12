@@ -14,16 +14,16 @@ import { SocialIcon } from 'react-social-icons';
 const services = ['Services', 'About', 'Photo Gallery'];
 const servicesLinks = ['/services', '/about', '/photos'];
 
-const personal = ['Admin', 'Legal'];
-const personalLinks = ['/admin', 'legalLink'];
+const personal = ['Admin', 'Looking For a Job?', 'Login'];
+const personalLinks = ['/admin', '/jobLink', '/login'];
 
-const info = ['Contact'];
+const info = ['Contact us!'];
 const infoLinks = ['/contactus'];
 
 const socialsLogos = [
   'facebook.com',
   'twitter.com',
-  'instragram.com',
+  'instagram.com',
   'tiktok.com',
 ];
 const socialsLinks = [
@@ -40,7 +40,7 @@ const contentLinks = [servicesLinks, personalLinks, infoLinks];
 
 const Footer = () => {
   return (
-    <div className="flex bg-white shadow-inner ">
+    <div className="flex bg-white shadow-inner py-5 ">
       {
         //dont worry about how this is way too complex
       }
@@ -48,7 +48,7 @@ const Footer = () => {
         <div className=" w-full h-[14rem] pl-[60px] flex flex-col space-y-2  p-5">
           {content.map((header, index) => (
             <Link
-              className="mx-8  w-[30%] p-auto flex items-center text-black"
+              className="mx-8  w-full p-auto flex items-center text-black"
               to={contentLinks[outIndex][index]}
             >
               {header}
@@ -61,10 +61,10 @@ const Footer = () => {
         //Icons are getting cut off on sides , don't want to scroll internet to find fix, also like 90% sure we will only need like
         // 1/2 of these socials
       }
-      <div className=" w-full h-[14rem] pl-[10px] py-3 flex flex-col space-y-2 overflow-visible">
+      <div className="w-full h-[14rem] pl-[10px]  flex flex-col space-y-2 overflow-visible align-middle items-center">
         {socialsLogos.map((social, index) => (
           <SocialIcon
-            className="my-auto text-black"
+            className="my-auto text-black p-3"
             link={social}
             url={socialsLinks[index]}
             target="_blank"
