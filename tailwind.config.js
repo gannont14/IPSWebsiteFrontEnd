@@ -8,6 +8,9 @@ module.exports = {
         primary: "#126321",
         secondary: "#1f2937",
       },
+      screens: {
+        "md": "860px"
+      }
     },
   },
   plugins: [require("daisyui")],

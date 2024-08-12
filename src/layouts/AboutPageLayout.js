@@ -6,7 +6,7 @@ import AboutPage from "../pages/AboutPage";
 const AboutPageLayout = () => {
   return (
     <>
-      <Navbar />
+      <Navbar/>
       <AboutPage />
       <Footer />
     </>
