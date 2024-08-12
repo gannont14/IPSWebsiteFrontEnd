@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
 const AdminUploadAboutForm = () => {
   // title, subheader, mainBodyContent, image
   const [formData, setFormData] = useState({
-    title: "",
-    subheader: "",
-    mainBodyContent: "",
+    title: '',
+    subheader: '',
+    mainBodyContent: '',
     image: null,
   });
 
@@ -30,29 +30,33 @@ const AdminUploadAboutForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
-    data.append("title", formData.title);
-    data.append("subheader", formData.subheader);
-    data.append("mainBodyContent", formData.mainBodyContent);
-    data.append("image", formData.image);
+    const token = localStorage.getItem('access_token');
+    data.append('title', formData.title);
+    data.append('subheader', formData.subheader);
+    data.append('mainBodyContent', formData.mainBodyContent);
+    data.append('image', formData.image);
 
     //make post request to services api
-    let response = await fetch("/api/aboutMainContent", {
-      method: "POST",
+    let response = await fetch('/api/aboutMainContent/modify', {
+      method: 'POST',
       body: data,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     //check to make sure actually uploaded
     if (response.ok) {
-      alert("Service uploaded successfully!");
+      alert('Service uploaded successfully!');
       // reset form to make another upload
       setFormData({
-        title: "",
-        subheader: "",
-        mainBodyContent: "",
+        title: '',
+        subheader: '',
+        mainBodyContent: '',
         image: null,
       });
     } else {
-      alert("Failed to upload service.");
+      alert('Failed to upload service.');
     }
   };
 
@@ -99,29 +103,6 @@ const AdminUploadAboutForm = () => {
         </div>
         <button type="submit">Upload About Section</button>
       </form>
-      <style jsx>
-        {`
-          input,
-          textarea {
-            border: solid;
-            border-radius: 3px;
-            margin: 5px;
-          }
-
-          form {
-            padding: 5px;
-            padding-left: 20px;
-          }
-
-          button {
-            border: solid;
-            border-radius: 3px;
-            margin: 5px;
-            width: 20rem;
-            height: 3rem;
-          }
-        `}
-      </style>
     </div>
   );
 };

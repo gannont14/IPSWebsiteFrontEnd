@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from 'react';
 // this file is massive and could be converted to maybe a smaller file or different file type?
-import HomePagePictureDescription from "../components/HomePagePictureDescription";
-import LoadingSpinner from "../components/LoadingSpinner";
-import bannerImage from "../static/BannerImage.jpg";
-import heroBackgroundImage from "../static/IMG_1691.jpeg";
-import backgroundVideo from "../static/IPS_Drone_Footage.mp4";
+import HomePagePictureDescription from '../components/HomePagePictureDescription';
+import LoadingSpinner from '../components/LoadingSpinner';
+import bannerImage from '../static/BannerImage.jpg';
+import heroBackgroundImage from '../static/IMG_1691.jpeg';
+import backgroundVideo from '../static/IPS_Drone_Footage.mp4';
 
 const HomePage = ({ videoRef, blurAmount }) => {
   const imageRef = useRef(null);
@@ -21,7 +21,7 @@ const HomePage = ({ videoRef, blurAmount }) => {
         imageRef.current.style.transform = `translateY(${scrolled * 0.5}px)`;
       }
       return () => {
-        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener('scroll', handleScroll);
       };
     };
     setIsLoading(false);
@@ -47,9 +47,7 @@ const HomePage = ({ videoRef, blurAmount }) => {
         />
         <div className="relative z-10 flex items-center justify-center h-full">
           {/* central hero content */}
-          <h1 className="text-white text-4xl font-bold">
-            The most we can fit in the trailer is 15 yards
-          </h1>
+          <h1 className="text-white text-4xl font-bold"></h1>
         </div>
       </div>
 
@@ -79,7 +77,7 @@ const HomePage = ({ videoRef, blurAmount }) => {
           src={bannerImage}
           ref={imageRef}
           className="parallax-image"
-          style={{ transform: "translateZ(0)", willChange: "transform" }}
+          style={{ transform: 'translateZ(0)', willChange: 'transform' }}
         />
       </div>
       {/* picture with about section flip orientation? */}

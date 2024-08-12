@@ -8,13 +8,14 @@ const AdminLoginPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch('/api/login', {
+    const response = await fetch('/token/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
     });
     const data = await response.json();
-    if (data.status === 'success') {
+    if (response.ok) {
+      localStorage.setItem('access_token', data.access);
       navigate('/admin');
     } else {
       alert('Invalid credentials');
