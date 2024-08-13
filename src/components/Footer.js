@@ -11,67 +11,58 @@ import { SocialIcon } from 'react-social-icons';
 
 //logo
 
-const services = ['Services', 'About', 'Photo Gallery'];
-const servicesLinks = ['/services', '/about', '/photos'];
-
-const personal = ['Admin', 'Looking For a Job?', 'Login'];
-const personalLinks = ['/admin', '/jobLink', '/login'];
-
-const info = ['Contact us!'];
-const infoLinks = ['/contactus'];
+const pages = ['Services', 'About', 'Photo Gallery', 'Jobs', 'Contact us!', 'Login'];
+const pageLinks = ['/services', '/about', '/photos', '/jobLink', '/contactus','/admin'];
 
 const socialsLogos = [
-  'facebook.com',
-  'twitter.com',
   'instagram.com',
-  'tiktok.com',
+  'nextdoor.com',
 ];
 const socialsLinks = [
-  'facebook',
-  'twitter',
   'https://www.instagram.com/interactivepropertysolutions/',
-  'tiktok',
+  'https://nextdoor.com/pages/interactive-property-solutions-carmel-in/',
 ];
 
-const content = [services, personal, info];
-const contentLinks = [servicesLinks, personalLinks, infoLinks];
+const content = [pages];
+const contentLinks = [pageLinks];
 
 // this entire section could be reworked to just be a daisyUI footer, https://daisyui.com/components/footer/
 
 const Footer = () => {
   return (
-    <div className="flex bg-white shadow-inner py-5 ">
-      {
-        //dont worry about how this is way too complex
-      }
+    <footer className="footer footer-center bg-primary p-10">
+
       {content.map((content, outIndex) => (
-        <div className=" w-full h-[14rem] pl-[60px] flex flex-col space-y-2  p-5">
-          {content.map((header, index) => (
-            <Link
-              className="mx-8  w-full p-auto flex items-center text-black"
-              to={contentLinks[outIndex][index]}
-            >
-              {header}
-            </Link>
-          ))}
-        </div>
+        <nav className="grid grid-flow-col gap-4">
+            {content.map((header, index) => (
+              <Link
+                className="link link-hover text-white"
+                to={contentLinks[outIndex][index]}
+              >
+                {header}
+              </Link>
+            ))}
+        </nav>
       ))}
 
       {
         //Icons are getting cut off on sides , don't want to scroll internet to find fix, also like 90% sure we will only need like
         // 1/2 of these socials
       }
-      <div className="w-full h-[14rem] pl-[10px]  flex flex-col space-y-2 overflow-visible align-middle items-center">
+      <div className="grid grid-flow-col gap-4">
         {socialsLogos.map((social, index) => (
           <SocialIcon
-            className="my-auto text-black p-3"
             link={social}
             url={socialsLinks[index]}
             target="_blank"
           />
         ))}
       </div>
-    </div>
+
+      <aside>
+        <p className="text-bgcustom">Copyright © {new Date().getFullYear()} - All rights reserved by Interactive Property Solutions</p>
+      </aside>
+    </footer>
   );
 };
 
