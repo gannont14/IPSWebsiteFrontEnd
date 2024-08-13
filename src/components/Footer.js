@@ -33,7 +33,7 @@ const Footer = () => {
     <footer className="footer footer-center bg-primary p-10">
 
       {content.map((content, outIndex) => (
-        <nav className="grid grid-flow-col gap-4">
+        <nav className="grid grid-flow-col gap-4 h-1 -mt-4">
             {content.map((header, index) => (
               <Link
                 className="link link-hover text-white"
@@ -49,7 +49,7 @@ const Footer = () => {
         //Icons are getting cut off on sides , don't want to scroll internet to find fix, also like 90% sure we will only need like
         // 1/2 of these socials
       }
-      <div className="grid grid-flow-col gap-4">
+      <div className="grid grid-flow-col gap-4 -mb-4">
         {socialsLogos.map((social, index) => (
           <SocialIcon
             link={social}
@@ -60,7 +60,7 @@ const Footer = () => {
       </div>
 
       <aside>
-        <p className="text-bgcustom">Copyright © {new Date().getFullYear()} - All rights reserved by Interactive Property Solutions</p>
+        <p className="text-bgcustom h-1">Copyright © {new Date().getFullYear()} - All rights reserved by Interactive Property Solutions</p>
       </aside>
     </footer>
   );
