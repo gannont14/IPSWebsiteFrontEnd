@@ -20,7 +20,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
   return (
-    <div className="App light">
+    <div className="App light bg-bgcustom">
       <Router>
         <Routes>
           <Route exact path="/" element={<HomePageLayout />} />
