@@ -52,7 +52,7 @@ const HomePage = ({ videoRef, blurAmount }) => {
       </div>
 
       {/* Contact us section */}
-      <div className=" h-[60rem] bg-white flex">
+      <div className=" h-[60rem] bg-bgcustom flex">
         <HomePagePictureDescription
           picture={heroBackgroundImage}
           content={
@@ -72,7 +72,7 @@ const HomePage = ({ videoRef, blurAmount }) => {
         />
       </div>
       {/* Large image banner */}
-      <div className="w-full h-[70vh] bg-white  drop-shadow-2xl overflow-hidden parallax-container">
+      <div className="w-full h-[70vh] drop-shadow-2xl overflow-hidden parallax-container">
         <img
           src={bannerImage}
           ref={imageRef}
@@ -81,7 +81,7 @@ const HomePage = ({ videoRef, blurAmount }) => {
         />
       </div>
       {/* picture with about section flip orientation? */}
-      <div className=" h-[60rem] bg-white flex">
+      <div className=" h-[60rem] bg-bgcustom flex">
         <HomePagePictureDescription
           picture={heroBackgroundImage}
           content={

@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         primary: "#126321",
         secondary: "#1f2937",
+        bgcustom: 'rgb(240, 240, 242)',
       },
       screens: {
         "md": "860px"
