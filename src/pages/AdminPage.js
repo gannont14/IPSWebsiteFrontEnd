@@ -45,74 +45,45 @@ const AdminPage = () => {
   }
 
   return (
-    <div className="pt-[10rem] h-[80vh] content">
-      <div className="dropdown bg-white text-black ">
+    <div className="pt-[10rem]  w-full h-[80vh] flex">
+      {/* left aligned content */}
+      <div className=" w-[25%] flex flex-col">
+        <h1>Upload Type</h1>
         <button
-          tabIndex={0}
-          role="button"
-          className="btn bg-white text-black m-1 border-black"
+          className={`my-5 ${uploadSelection == 'service' ? 'font-bold' : ''} `}
+          onClick={() => setUploadSelection('service')}
         >
-          Select What you want to upload
+          Service
         </button>
-        <ul
-          tabIndex={0}
-          className="dropdown-content menu bg-base-100 rounded-box z-[1]  p-2 shadow w-[22rem]"
+        <button
+          className={`my-5 ${uploadSelection == 'photo' ? 'font-bold' : ''} `}
+          onClick={() => setUploadSelection('photo')}
         >
-          <li>
-            <button
-              className="bg-white text-black"
-              onClick={() => {
-                setUploadSelection('service');
-              }}
-            >
-              Service
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => {
-                setUploadSelection('about');
-              }}
-            >
-              About
-            </button>
-          </li>
-
-          <li>
-            <button
-              onClick={() => {
-                setUploadSelection('photo');
-              }}
-            >
-              Photo
-            </button>
-          </li>
-        </ul>
+          Photo
+        </button>
+        <button
+          className={`my-5 ${uploadSelection == 'about' ? 'font-bold' : ''} `}
+          onClick={() => setUploadSelection('about')}
+        >
+          About
+        </button>
       </div>
+      {/* right aligned content */}
+      <div className="border border-green-500 w-full">{content}</div>
 
-      {content}
       <style>
         {`
 
-              content.button {
-                border: solid;
-                border-radius: 3px;
-                margin: 5px;
-                width: 20rem;
-                height: 3rem;
-              }
+    input, textarea{
+      border: solid;
+      border-radius: 3px;
+      margin: 5px;
+    }
 
-          input,
-          textarea {
-            border: solid;
-            border-radius: 3px;
-            margin: 5px;
-          }
+    form{
+      flex-direction: column;
+    }
 
-          form {
-            padding: 5px;
-            padding-left: 20px;
-          }
 `}
       </style>
     </div>
