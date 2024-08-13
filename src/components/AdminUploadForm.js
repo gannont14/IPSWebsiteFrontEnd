@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { fetchWithTokenRefresh } from '../utils/apiUtils';
+import { ServicesCard } from './ServicesCard';
 
 // depending on amount of different forms are going to need to come out, i.e. services, about etc. might need to parameterize this to handle
 // different formats and requests
@@ -10,6 +12,7 @@ const AdminUploadForm = () => {
     extendedBody: '',
     image: null,
   });
+  const [imagePreview, setImagePreview] = useState(null);
 
   //update state change of title, body
   const handleChange = (e) => {
@@ -22,9 +25,12 @@ const AdminUploadForm = () => {
 
   //update state change of images
   const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImagePreview(URL.createObjectURL(file));
+
     setFormData({
       ...formData,
-      image: e.target.files[0],
+      image: file,
     });
   };
 
@@ -36,9 +42,10 @@ const AdminUploadForm = () => {
     const data = new FormData();
     data.append('title', formData.title);
     data.append('body', formData.body);
+    data.append('extendedBody', formData.body);
     data.append('image', formData.image);
 
-    const response = await fetch('/api/services/modify', {
+    const response = await fetchWithTokenRefresh('/api/services/modify', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
@@ -54,14 +61,15 @@ const AdminUploadForm = () => {
         extendedBody: '',
         image: null,
       });
+      setImagePreview(null);
     } else {
       alert('Failed to upload service.');
     }
   };
 
   return (
-    <div>
-      <form className="form" onSubmit={handleSubmit}>
+    <div className="flex h-full w-full">
+      <form className="form " onSubmit={handleSubmit}>
         <div>
           <label>Title:</label>
           <input
@@ -82,15 +90,15 @@ const AdminUploadForm = () => {
           ></textarea>
         </div>
         <div>
-          <label>Title:</label>
-          <input
-            type="text"
+          <label>Extended Body:</label>
+          <textarea
             name="extendedBody"
             value={formData.extendedBody}
             onChange={handleChange}
             required
-          />
-        </div>{' '}
+          ></textarea>
+        </div>
+
         <div>
           <label>Image:</label>
           <input
@@ -103,6 +111,19 @@ const AdminUploadForm = () => {
         </div>
         <button type="submit">Upload Service</button>
       </form>
+      <div className="flex align-middle  h-auto w-full ">
+        <div className="m-auto flex-col">
+          <div>service card preview</div>
+          <div className="w-[30rem]">
+            <ServicesCard
+              title={formData.title}
+              body={formData.body}
+              extendedBody={formData.extendedBody}
+              image={imagePreview}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

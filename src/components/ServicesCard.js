@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 
 export const ServicesCard = ({ title, body, image, extendedBody }) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const defaultImage =
+    'https://us1-photo.nextdoor.com/business_logo/ac/c3/acc3a9897d80a7e1be01f81e4b871b07.png';
 
   const toggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -13,7 +15,7 @@ export const ServicesCard = ({ title, body, image, extendedBody }) => {
     >
       {/* Default card before expanded */}
       <figure>
-        <img src={image} alt="Insert image alt text here" />
+        <img src={image || defaultImage} alt="image appears here" />
       </figure>
       <div className="card-body items-center text-center">
         <h2 className="card-title text-black">{title}</h2>

@@ -11,7 +11,9 @@ const ServicesPage = () => {
   //fetch form services api, URL : 'api/services/
 
   // let API_URL = '/api/services';
-  let API_URL = 'https://ipswebsitebackend.onrender.com/api/services/';
+
+  // https://ipswebsitebackend.onrender.com/
+  let API_URL = 'api/services/';
 
   useEffect(() => {
     getServices();

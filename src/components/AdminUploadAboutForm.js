@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import AboutPage from '../pages/AboutPage';
 
 const AdminUploadAboutForm = () => {
   // title, subheader, mainBodyContent, image
@@ -61,7 +62,7 @@ const AdminUploadAboutForm = () => {
   };
 
   return (
-    <div>
+    <div className="flex w-full h-full">
       <form onSubmit={handleSubmit}>
         <div>
           <label>Title:</label>
