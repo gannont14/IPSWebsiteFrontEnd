@@ -56,8 +56,8 @@ const HomePage = ({ videoRef, blurAmount }) => {
         <HomePagePictureDescription
           picture={heroBackgroundImage}
           content={
-            <div className="text-3xl text-gray-200 font-thin text-center p-3 m-auto rounded-lg">
-              <h1 className="text-5xl text-gray-300 pb-7 font-semibold">
+            <div className="text-1xl md:text-3xl text-gray-200 font-thin text-center p-3 m-auto rounded-lg">
+              <h1 className="text-2xl md:text-5xl text-gray-300 pb-7 font-semibold">
                 Get in touch!
               </h1>
               <h2>Contact us to speak with us or request a quote today!</h2>
@@ -85,7 +85,7 @@ const HomePage = ({ videoRef, blurAmount }) => {
         <HomePagePictureDescription
           picture={heroBackgroundImage}
           content={
-            <div className="text-3xl text-white font-thin text-center p-3 m-auto rounded-lg">
+            <div className="text-1xl md:text-3xl text-white font-thin text-center p-3 m-auto rounded-lg">
               Over a <b>decade</b> of landscaping experience ensure a
               beautifully designed, built, and managed landscape
             </div>

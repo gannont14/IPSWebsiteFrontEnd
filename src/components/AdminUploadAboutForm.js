@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import AboutPage from '../pages/AboutPage';
+import { fetchWithTokenRefresh } from '../utils/apiUtils';
 
 const AdminUploadAboutForm = () => {
   // title, subheader, mainBodyContent, image
@@ -10,6 +10,23 @@ const AdminUploadAboutForm = () => {
     image: null,
   });
 
+  useEffect(() => {
+    const fetchExistingContent = async () => {
+      const response = await fetch('api/aboutMainContent');
+      if (response.ok) {
+        const data = await response.json();
+        setFormData({
+          title: data.title,
+          subheader: data.subheader,
+          mainBodyContent: data.mainBodyContent,
+          image: null,
+        });
+      }
+    };
+
+    fetchExistingContent();
+  }, []);
+   
   //update state change of title, body
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -38,13 +55,26 @@ const AdminUploadAboutForm = () => {
     data.append('image', formData.image);
 
     //make post request to services api
-    let response = await fetch('/api/aboutMainContent/modify', {
+    let existingContent = await fetch('api/aboutMainContent')
+    if (existingContent.ok) {
+
+    } else {
+      let response = await fetchWithTokenRefresh('/api/aboutMainContent/modify', {
+        method: 'POST',
+        body: data,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+    };
+
+    let response = await fetchWithTokenRefresh('/api/aboutMainContent/modify', {
       method: 'POST',
       body: data,
       headers: {
         Authorization: `Bearer ${token}`,
       },
-    });
+    })
 
     //check to make sure actually uploaded
     if (response.ok) {
