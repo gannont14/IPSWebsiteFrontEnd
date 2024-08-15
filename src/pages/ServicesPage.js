@@ -60,8 +60,8 @@ const ServicesPage = () => {
             key={service.id}
             title={service.title}
             body={service.body}
-            image={service.image}
-            extendedBody={service.extendedBody}
+            cardImage={service.cardImage}
+            serviceId={service.serviceId}
           />
         ))}
       </div>
