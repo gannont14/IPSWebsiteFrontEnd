@@ -12,11 +12,8 @@ import AdminPageLayout from './layouts/AdminPageLayout';
 import ContactUsLayout from './layouts/ContactUsLayout';
 import HomePageLayout from './layouts/HomePageLayout';
 import PhotoGalleryLayout from './layouts/PhotoGalleryLayout';
+import ServicesPageFullLayout from './layouts/ServicesPageFullLayout';
 import ServicesPageLayout from './layouts/ServicesPageLayout';
-
-import PrivateRoute from './components/PrivateRoute';
-
-import { useEffect, useState } from 'react';
 
 function App() {
   return (
@@ -25,6 +22,10 @@ function App() {
         <Routes>
           <Route exact path="/" element={<HomePageLayout />} />
           <Route path="/services" element={<ServicesPageLayout />} />
+          <Route
+            path="/services/:serviceId"
+            element={<ServicesPageFullLayout />}
+          />
           <Route path="/about" element={<AboutPageLayout />} />
           <Route path="/photos" element={<PhotoGalleryLayout />} />
           {/* <Route

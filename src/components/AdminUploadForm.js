@@ -8,9 +8,14 @@ import { ServicesCard } from './ServicesCard';
 const AdminUploadForm = () => {
   const [formData, setFormData] = useState({
     title: '',
+    serviceId: '',
     body: '',
-    extendedBody: '',
-    image: null,
+    summaryBody: '',
+    photoGalleryTag: '',
+
+    cardImage: null,
+    beforeImage: null,
+    afterImage: null,
   });
   const [imagePreview, setImagePreview] = useState(null);
 
@@ -25,13 +30,18 @@ const AdminUploadForm = () => {
 
   //update state change of images
   const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    setImagePreview(URL.createObjectURL(file));
-
+    // const file = e.target.files[0];
+    // setImagePreview(URL.createObjectURL(file));
+    const { name, files } = e.target;
     setFormData({
       ...formData,
-      image: file,
+      [name]: files[0],
     });
+
+    if (name === 'cardImage' && files[0]) {
+      const previewURL = URL.createObjectURL(files[0]);
+      setImagePreview(previewURL);
+    }
   };
 
   //   form submit
@@ -41,9 +51,14 @@ const AdminUploadForm = () => {
     const token = localStorage.getItem('access_token');
     const data = new FormData();
     data.append('title', formData.title);
+    data.append('serviceId', formData.serviceId);
     data.append('body', formData.body);
-    data.append('extendedBody', formData.body);
-    data.append('image', formData.image);
+    data.append('summaryBody', formData.summaryBody);
+    data.append('photoGalleryTag', formData.photoGalleryTag);
+
+    data.append('cardImage', formData.cardImage);
+    data.append('beforeImage', formData.beforeImage);
+    data.append('afterImage', formData.afterImage);
 
     const response = await fetchWithTokenRefresh('/api/services/modify', {
       method: 'POST',
@@ -57,9 +72,14 @@ const AdminUploadForm = () => {
       alert('Service uploaded successfully!');
       setFormData({
         title: '',
+        serviceId: '',
         body: '',
-        extendedBody: '',
-        image: null,
+        summaryBody: '',
+        photoGalleryTag: '',
+
+        cardImage: null,
+        beforeImage: null,
+        afterImage: null,
       });
       setImagePreview(null);
     } else {
@@ -81,6 +101,16 @@ const AdminUploadForm = () => {
           />
         </div>
         <div>
+          <label>Service ID:</label>
+          <input
+            type="text"
+            name="serviceId"
+            value={formData.serviceId}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
           <label>Body:</label>
           <textarea
             name="body"
@@ -90,20 +120,51 @@ const AdminUploadForm = () => {
           ></textarea>
         </div>
         <div>
-          <label>Extended Body:</label>
+          <label>Summary Body:</label>
           <textarea
-            name="extendedBody"
-            value={formData.extendedBody}
+            name="summaryBody"
+            value={formData.summaryBody}
             onChange={handleChange}
             required
           ></textarea>
         </div>
 
         <div>
-          <label>Image:</label>
+          <label>Photo Gallery Tag:</label>
+          <input
+            type="text"
+            name="photoGalleryTag"
+            value={formData.photoGalleryTag}
+            onChange={handleChange}
+            required
+          />
+        </div>
+
+        <div>
+          <label>Card Image:</label>
           <input
             type="file"
-            name="image"
+            name="cardImage"
+            onChange={handleImageChange}
+            accept="image/*"
+            required
+          />
+        </div>
+        <div>
+          <label>Before Image:</label>
+          <input
+            type="file"
+            name="beforeImage"
+            onChange={handleImageChange}
+            accept="image/*"
+            required
+          />
+        </div>
+        <div>
+          <label>After Image:</label>
+          <input
+            type="file"
+            name="afterImage"
             onChange={handleImageChange}
             accept="image/*"
             required
@@ -117,9 +178,8 @@ const AdminUploadForm = () => {
           <div className="w-[30rem]">
             <ServicesCard
               title={formData.title}
-              body={formData.body}
-              extendedBody={formData.extendedBody}
-              image={imagePreview}
+              extendedBody={formData.body}
+              cardImage={imagePreview}
             />
           </div>
         </div>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-export const ServicesCard = ({ title, body, image, extendedBody }) => {
+export const ServicesCard = ({ title, serviceId, body, cardImage }) => {
+  const navigate = useNavigate();
   const [isExpanded, setIsExpanded] = useState(false);
   const defaultImage =
     'https://us1-photo.nextdoor.com/business_logo/ac/c3/acc3a9897d80a7e1be01f81e4b871b07.png';
@@ -15,34 +17,20 @@ export const ServicesCard = ({ title, body, image, extendedBody }) => {
     >
       {/* Default card before expanded */}
       <figure>
-        <img src={image || defaultImage} alt="image appears here" />
+        <img src={cardImage || defaultImage} alt="image appears here" />
       </figure>
       <div className="card-body items-center text-center">
         <h2 className="card-title text-black">{title}</h2>
         <p className=" text-gray-700">{body}</p>
         <div className="card-actions justify-center p-3">
-          <button onClick={toggleExpand} className="btn bg-primary text-white">
+          <Link
+            to={`/services/${serviceId}`}
+            className="btn bg-primary text-white"
+          >
             Read More
-          </button>
+          </Link>
         </div>
       </div>
-
-      {/* overlay for button click */}
-      {isExpanded && (
-        <div className="absolute inset-0 bg-gray-600 bg-opacity-90 flex flex-col items-center justify-center z-10 rounded-lg">
-          <div className="text-center text-white h-[78%] p-7">
-            <p>{extendedBody}</p>
-          </div>
-          <div className="card-actions justify-center p-3">
-            <button
-              onClick={toggleExpand}
-              className="btn bg-primary text-white"
-            >
-              Read More
-            </button>
-          </div>
-        </div>
-      )}
     </div>
 
     // <div className="relative border border-gray-300 p-4 my-4">
