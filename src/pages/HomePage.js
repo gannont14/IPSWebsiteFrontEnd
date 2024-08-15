@@ -9,6 +9,7 @@ import backgroundVideo from '../static/IPS_Drone_Footage.mp4';
 const HomePage = ({ videoRef, blurAmount }) => {
   const imageRef = useRef(null);
   let [isLoading, setIsLoading] = useState(true);
+  
 
   useEffect(() => {
     if (videoRef.current) {
@@ -56,8 +57,8 @@ const HomePage = ({ videoRef, blurAmount }) => {
         <HomePagePictureDescription
           picture={heroBackgroundImage}
           content={
-            <div className="text-3xl text-gray-200 font-thin text-center p-3 m-auto rounded-lg">
-              <h1 className="text-5xl text-gray-300 pb-7 font-semibold">
+            <div className="text-1xl text-gray-200 font-thin text-center p-3 m-auto rounded-lg md:text-3xl">
+              <h1 className="text-2xl text-gray-300 pb-7 font-semibold md:text-5xl">
                 Get in touch!
               </h1>
               <h2>Contact us to speak with us or request a quote today!</h2>
@@ -85,7 +86,7 @@ const HomePage = ({ videoRef, blurAmount }) => {
         <HomePagePictureDescription
           picture={heroBackgroundImage}
           content={
-            <div className="text-3xl text-white font-thin text-center p-3 m-auto rounded-lg">
+            <div className="text-1xl text-white font-thin text-center p-3 m-auto rounded-lg md:text-3xl">
               Over a <b>decade</b> of landscaping experience ensure a
               beautifully designed, built, and managed landscape
             </div>
