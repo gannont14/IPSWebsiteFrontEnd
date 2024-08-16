@@ -13,7 +13,7 @@ const ServicesPage = () => {
   // let API_URL = '/api/services';
 
   // https://ipswebsitebackend.onrender.com/
-  let API_URL = 'api/services/';
+  let API_URL = 'https://ipswebsitebackend.onrender.com/api/services/';
 
   useEffect(() => {
     getServices();

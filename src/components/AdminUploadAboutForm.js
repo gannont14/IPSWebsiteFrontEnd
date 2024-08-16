@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { fetchWithTokenRefresh } from '../utils/apiUtils';
 
 const AdminUploadAboutForm = () => {
-  // title, subheader, mainBodyContent, image
   const [formData, setFormData] = useState({
     title: '',
     subheader: '',
@@ -27,7 +26,6 @@ const AdminUploadAboutForm = () => {
     fetchExistingContent();
   }, []);
    
-  //update state change of title, body
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -36,7 +34,6 @@ const AdminUploadAboutForm = () => {
     });
   };
 
-  //update state change of images
   const handleImageChange = (e) => {
     setFormData({
       ...formData,
@@ -44,7 +41,6 @@ const AdminUploadAboutForm = () => {
     });
   };
 
-  //   form submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -52,44 +48,13 @@ const AdminUploadAboutForm = () => {
     data.append('title', formData.title);
     data.append('subheader', formData.subheader);
     data.append('mainBodyContent', formData.mainBodyContent);
-    data.append('image', formData.image);
-
-    //make post request to services api
-    let existingContent = await fetch('api/aboutMainContent')
-    if (existingContent.ok) {
-
-    } else {
-      let response = await fetchWithTokenRefresh('/api/aboutMainContent/modify', {
-        method: 'POST',
-        body: data,
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-    };
-
-    let response = await fetchWithTokenRefresh('/api/aboutMainContent/modify', {
-      method: 'POST',
-      body: data,
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-
-    //check to make sure actually uploaded
-    if (response.ok) {
-      alert('Service uploaded successfully!');
-      // reset form to make another upload
-      setFormData({
-        title: '',
-        subheader: '',
-        mainBodyContent: '',
-        image: null,
-      });
-    } else {
-      alert('Failed to upload service.');
+    if (formData.image){
+      data.append('image', formData.image);
     }
-  };
+  }
+  
+
+
 
   return (
     <div className="flex w-full h-full">
